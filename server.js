@@ -249,7 +249,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
 
     const mailOptions = {
       from: process.env.OUTLOOK_EMAIL,
-      to: 'irfanishtiaqk10@gmail.com',
+      to: 'irfanishtiaq2k10@gmail.com',
       subject: 'New Application Submitted',
       html: emailContent,
       attachments,
