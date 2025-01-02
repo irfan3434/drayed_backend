@@ -60,6 +60,8 @@ const applicationSchema = new mongoose.Schema({
   applicantGender: { type: String },
   email: { type: String },
   phone: { type: String },
+  tribeCheckbox: { type: String },
+  specificAffiliation: { type: String },
   organizationName: { type: String },
   ownerName: { type: String },
   organizationEmail: { type: String },
@@ -223,6 +225,10 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
       <tr style="background-color: #f4f4f4;">
         <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">رقم جوال/Phone</td>
         <td style="border: 1px solid #ddd; padding: 8px;">${phone || 'N/A'}</td>
+      </tr>
+      <tr style="background-color: #f4f4f4;">
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;"> حدد الانتماء/Specific Affiliation</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${specificAffiliation || 'N/A'}</td>
       </tr>
     </table>
   
