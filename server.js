@@ -233,7 +233,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
         <tr>
           <td>${achievement.title}</td>
           <td>${achievement.description}</td>
-          <td>${achievement.filePath ? `File Attached` : 'No file'}</td>
+          <td>${achievement.filePath ? `ملف مرفق/File Attached` : 'No file'}</td>
         </tr>
       `).join('')}
     </table>
