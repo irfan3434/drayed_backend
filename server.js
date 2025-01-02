@@ -192,53 +192,109 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
 
 
     const emailContent = `
-    <h2>New Application Received</h2>
+    <h2 style="font-family: Arial, sans-serif; color: #333;">New Application Received</h2>
   
-    <h3>معلومات عامة/General Information</h3>
-    <table border="1" cellpadding="5" cellspacing="0">
-      <tr><td><strong>نوع النموذج/Form Type</strong></td><td>${formType || 'N/A'}</td></tr>
-      <tr><td><strong>نوع المستخدم/User Type</strong></td><td>${userType || 'N/A'}</td></tr>
-      <tr><td><strong>اسم مقدم الطلب/Applicant Name</strong></td><td>${fullName || 'N/A'}</td></tr>
-      <tr><td><strong>عمر مقدم الطلب/Applicant Age</strong></td><td>${applicantAge || 'N/A'}</td></tr>
-      <tr><td><strong>جنس مقدم الطلب/Applicant Gender</strong></td><td>${applicantGender || 'N/A'}</td></tr>
-      <tr><td><strong>البريد الإلكتروني/Email</strong></td><td>${email || 'N/A'}</td></tr>
-      <tr><td><strong>رقم جوال/Phone</strong></td><td>${phone || 'N/A'}</td></tr>
+    <h3 style="font-family: Arial, sans-serif; color: #007BFF;">معلومات عامة/General Information</h3>
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-bottom: 20px;">
+      <tr style="background-color: #f4f4f4;">
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">نوع النموذج/Form Type</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${formType || 'N/A'}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">نوع المستخدم/User Type</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${userType || 'N/A'}</td>
+      </tr>
+      <tr style="background-color: #f4f4f4;">
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">اسم مقدم الطلب/Applicant Name</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${fullName || 'N/A'}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">عمر مقدم الطلب/Applicant Age</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${applicantAge || 'N/A'}</td>
+      </tr>
+      <tr style="background-color: #f4f4f4;">
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">جنس مقدم الطلب/Applicant Gender</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${applicantGender || 'N/A'}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">البريد الإلكتروني/Email</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${email || 'N/A'}</td>
+      </tr>
+      <tr style="background-color: #f4f4f4;">
+        <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">رقم جوال/Phone</td>
+        <td style="border: 1px solid #ddd; padding: 8px;">${phone || 'N/A'}</td>
+      </tr>
     </table>
   
     ${formType === 'organization' ? `
-      <h3>معلومات عن المؤسسة/Organization Details</h3>
-      <table border="1" cellpadding="5" cellspacing="0">
-        <tr><td><strong>اسم الكيان/Organization Name</strong></td><td>${organizationName || 'N/A'}</td></tr>
-        <tr><td><strong>نوع الكيان وملكيته/Owner Name</strong></td><td>${ownerName || 'N/A'}</td></tr>
-        <tr><td><strong>البريد الالكتروني للكيان/Organization Email</strong></td><td>${organizationEmail || 'N/A'}</td></tr>
-        <tr><td><strong>رقم جوال التواصل/Organization Phone</strong></td><td>${organizationNumber || 'N/A'}</td></tr>
+      <h3 style="font-family: Arial, sans-serif; color: #007BFF;">معلومات عن المؤسسة/Organization Details</h3>
+      <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-bottom: 20px;">
+        <tr style="background-color: #f4f4f4;">
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">اسم الكيان/Organization Name</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${organizationName || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">نوع الكيان وملكيته/Owner Name</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${ownerName || 'N/A'}</td>
+        </tr>
+        <tr style="background-color: #f4f4f4;">
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">البريد الالكتروني للكيان/Organization Email</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${organizationEmail || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">رقم جوال التواصل/Organization Phone</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${organizationNumber || 'N/A'}</td>
+        </tr>
       </table>
     ` : ''}
   
     ${userType === 'referral' ? `
-      <h3>بيانات من قام بترشيح شخص آخر/Referrer Details</h3>
-      <table border="1" cellpadding="5" cellspacing="0">
-        <tr><td><strong>اسمك الرباعي كامل/Referrer Name</strong></td><td>${referrerFullName || 'N/A'}</td></tr>
-        <tr><td><strong>العمر (السنوات)/Referrer Age</strong></td><td>${referrerAge || 'N/A'}</td></tr>
-        <tr><td><strong>الجنس/Referrer Gender</strong></td><td>${referrerGender || 'N/A'}</td></tr>
-        <tr><td><strong>البريد الإلكتروني/Referrer Email</strong></td><td>${referrerEmail || 'N/A'}</td></tr>
-        <tr><td><strong>رقم الجوال/Referrer Phone</strong></td><td>${referrerPhone || 'N/A'}</td></tr>
-        <tr><td><strong>مسوغات الترشيح/Reason for Nomination</strong></td><td>${nominationReason || 'N/A'}</td></tr>
+      <h3 style="font-family: Arial, sans-serif; color: #007BFF;">بيانات من قام بترشيح شخص آخر/Referrer Details</h3>
+      <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-bottom: 20px;">
+        <tr style="background-color: #f4f4f4;">
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">اسمك الرباعي كامل/Referrer Name</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${referrerFullName || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">العمر (السنوات)/Referrer Age</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${referrerAge || 'N/A'}</td>
+        </tr>
+        <tr style="background-color: #f4f4f4;">
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">الجنس/Referrer Gender</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${referrerGender || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">البريد الإلكتروني/Referrer Email</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${referrerEmail || 'N/A'}</td>
+        </tr>
+        <tr style="background-color: #f4f4f4;">
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">رقم الجوال/Referrer Phone</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${referrerPhone || 'N/A'}</td>
+        </tr>
+        <tr>
+          <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold;">مسوغات الترشيح/Reason for Nomination</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${nominationReason || 'N/A'}</td>
+        </tr>
       </table>
     ` : ''}
   
-    <h3>Achievements</h3>
-    <table border="1" cellpadding="5" cellspacing="0">
-      <tr><th>العنوان/Title</th><th>الوصف/Description</th><th>File</th></tr>
-      ${achievements.map((achievement) => `
-        <tr>
-          <td>${achievement.title}</td>
-          <td>${achievement.description}</td>
-          <td>${achievement.filePath ? `ملف مرفق/File Attached` : 'No file'}</td>
+    <h3 style="font-family: Arial, sans-serif; color: #007BFF;">Achievements</h3>
+    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; margin-bottom: 20px;">
+      <tr style="background-color: #007BFF; color: #fff;">
+        <th style="border: 1px solid #ddd; padding: 8px;">العنوان/Title</th>
+        <th style="border: 1px solid #ddd; padding: 8px;">الوصف/Description</th>
+        <th style="border: 1px solid #ddd; padding: 8px;">File</th>
+      </tr>
+      ${achievements.map((achievement, index) => `
+        <tr style="${index % 2 === 0 ? 'background-color: #f4f4f4;' : ''}">
+          <td style="border: 1px solid #ddd; padding: 8px;">${achievement.title}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${achievement.description}</td>
+          <td style="border: 1px solid #ddd; padding: 8px;">${achievement.filePath ? 'ملف مرفق/File Attached' : 'No file'}</td>
         </tr>
       `).join('')}
     </table>
   `;
+
   
 
     const attachments = achievements
