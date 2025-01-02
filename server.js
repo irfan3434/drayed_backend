@@ -193,47 +193,47 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
     const emailContent = `
     <h2>New Application Received</h2>
   
-    <h3>General Information</h3>
+    <h3>معلومات عامة/General Information</h3>
     <table border="1" cellpadding="5" cellspacing="0">
-      <tr><td><strong>Form Type</strong></td><td>${formType || 'N/A'}</td></tr>
-      <tr><td><strong>User Type</strong></td><td>${userType || 'N/A'}</td></tr>
-      <tr><td><strong>Applicant Name</strong></td><td>${fullName || 'N/A'}</td></tr>
-      <tr><td><strong>Applicant Age</strong></td><td>${applicantAge || 'N/A'}</td></tr>
-      <tr><td><strong>Applicant Gender</strong></td><td>${applicantGender || 'N/A'}</td></tr>
-      <tr><td><strong>Email</strong></td><td>${email || 'N/A'}</td></tr>
-      <tr><td><strong>Phone</strong></td><td>${phone || 'N/A'}</td></tr>
+      <tr><td><strong>نوع النموذج/Form Type</strong></td><td>${formType || 'N/A'}</td></tr>
+      <tr><td><strong>نوع المستخدم/User Type</strong></td><td>${userType || 'N/A'}</td></tr>
+      <tr><td><strong>اسم مقدم الطلب/Applicant Name</strong></td><td>${fullName || 'N/A'}</td></tr>
+      <tr><td><strong>عمر مقدم الطلب/Applicant Age</strong></td><td>${applicantAge || 'N/A'}</td></tr>
+      <tr><td><strong>جنس مقدم الطلب/Applicant Gender</strong></td><td>${applicantGender || 'N/A'}</td></tr>
+      <tr><td><strong>البريد الإلكتروني/Email</strong></td><td>${email || 'N/A'}</td></tr>
+      <tr><td><strong>رقم جوال/Phone</strong></td><td>${phone || 'N/A'}</td></tr>
     </table>
   
     ${formType === 'organization' ? `
-      <h3>Organization Details</h3>
+      <h3>معلومات عن المؤسسة/Organization Details</h3>
       <table border="1" cellpadding="5" cellspacing="0">
-        <tr><td><strong>Organization Name</strong></td><td>${organizationName || 'N/A'}</td></tr>
-        <tr><td><strong>Owner Name</strong></td><td>${ownerName || 'N/A'}</td></tr>
-        <tr><td><strong>Organization Email</strong></td><td>${organizationEmail || 'N/A'}</td></tr>
-        <tr><td><strong>Organization Phone</strong></td><td>${organizationNumber || 'N/A'}</td></tr>
+        <tr><td><strong>اسم الكيان/Organization Name</strong></td><td>${organizationName || 'N/A'}</td></tr>
+        <tr><td><strong>نوع الكيان وملكيته/Owner Name</strong></td><td>${ownerName || 'N/A'}</td></tr>
+        <tr><td><strong>البريد الالكتروني للكيان/Organization Email</strong></td><td>${organizationEmail || 'N/A'}</td></tr>
+        <tr><td><strong>رقم جوال التواصل/Organization Phone</strong></td><td>${organizationNumber || 'N/A'}</td></tr>
       </table>
     ` : ''}
   
     ${userType === 'referral' ? `
-      <h3>Referrer Details</h3>
+      <h3>بيانات من قام بترشيح شخص آخر/Referrer Details</h3>
       <table border="1" cellpadding="5" cellspacing="0">
-        <tr><td><strong>Referrer Name</strong></td><td>${referrerFullName || 'N/A'}</td></tr>
-        <tr><td><strong>Referrer Age</strong></td><td>${referrerAge || 'N/A'}</td></tr>
-        <tr><td><strong>Referrer Gender</strong></td><td>${referrerGender || 'N/A'}</td></tr>
-        <tr><td><strong>Referrer Email</strong></td><td>${referrerEmail || 'N/A'}</td></tr>
-        <tr><td><strong>Referrer Phone</strong></td><td>${referrerPhone || 'N/A'}</td></tr>
-        <tr><td><strong>Reason for Nomination</strong></td><td>${nominationReason || 'N/A'}</td></tr>
+        <tr><td><strong>اسمك الرباعي كامل/Referrer Name</strong></td><td>${referrerFullName || 'N/A'}</td></tr>
+        <tr><td><strong>العمر (السنوات)/Referrer Age</strong></td><td>${referrerAge || 'N/A'}</td></tr>
+        <tr><td><strong>الجنس/Referrer Gender</strong></td><td>${referrerGender || 'N/A'}</td></tr>
+        <tr><td><strong>البريد الإلكتروني/Referrer Email</strong></td><td>${referrerEmail || 'N/A'}</td></tr>
+        <tr><td><strong>رقم الجوال/Referrer Phone</strong></td><td>${referrerPhone || 'N/A'}</td></tr>
+        <tr><td><strong>مسوغات الترشيح/Reason for Nomination</strong></td><td>${nominationReason || 'N/A'}</td></tr>
       </table>
     ` : ''}
   
     <h3>Achievements</h3>
     <table border="1" cellpadding="5" cellspacing="0">
-      <tr><th>Title</th><th>Description</th><th>File</th></tr>
+      <tr><th>العنوان/Title</th><th>الوصف/Description</th><th>File</th></tr>
       ${achievements.map((achievement) => `
         <tr>
           <td>${achievement.title}</td>
           <td>${achievement.description}</td>
-          <td>${achievement.filePath ? `<a href="${achievement.filePath}">Download</a>` : 'No file'}</td>
+          <td>${achievement.filePath ? `File Attached` : 'No file'}</td>
         </tr>
       `).join('')}
     </table>
