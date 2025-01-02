@@ -101,11 +101,6 @@ const transporter = nodemailer.createTransport({
 app.get('/', (req, res) => res.send('Backend server is running!'));
 
 
-const formTypeTranslations = {
-  personal: "افراد", // Replace with the actual translation for 'general.hta_org2'
-  organization: "كيانات (قطاعات/مؤسسات/شركات/مجموعات)", // Replace with the actual translation for 'general.hta_org3'
-};
-
 // POST route
 app.post('/submit-application', uploadMiddleware, async (req, res) => {
   try {
@@ -119,9 +114,6 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
       achievementTitle, description, achievementTitleOrg, descriptionOrg,
       referrerFullName, referrerAge, referrerGender, referrerEmail, referrerPhone, nominationReason,
     } = req.body;
-
-
-    const translatedFormType = formTypeTranslations[formType] || formType;
 
     // Process achievements
     const achievements = formType === 'personal'
@@ -161,7 +153,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
 
     // Save to database
     const applicationData = {
-      formType: translatedFormType,
+      formType,
       userType,
       fullName,
       applicantAge,
