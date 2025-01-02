@@ -106,30 +106,14 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
   try {
     console.log('Files:', req.files); // Debugging files
     console.log('Body:', req.body);  // Debugging body
- 
 
     const {
-      formType, formLanguage, userType, fullName, applicantAge, applicantGender, email, phone,
+      formType, userType, fullName, applicantAge, applicantGender, email, phone,
       organizationName, ownerName, organizationEmail, organizationNumber,
       tribeCheckbox, specificAffiliation, ndaAccepted,
       achievementTitle, description, achievementTitleOrg, descriptionOrg,
       referrerFullName, referrerAge, referrerGender, referrerEmail, referrerPhone, nominationReason,
     } = req.body;
-
-
-    const formTypeTranslations = {
-      en: {
-        individual: "Individual",
-        organization: "Organization",
-      },
-      ar: {
-        individual: "أفراد",
-        organization: "منظمة",
-      },
-    };
-
-    const translatedFormType = formTypeTranslations[formLanguage]?.[formType] || formType;
-
 
     // Process achievements
     const achievements = formType === 'personal'
@@ -169,7 +153,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
 
     // Save to database
     const applicationData = {
-      formType: translatedFormType,
+      formType,
       userType,
       fullName,
       applicantAge,
