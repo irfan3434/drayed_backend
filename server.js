@@ -214,6 +214,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
         <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold; text-align:center;">عمر مقدم الطلب/Applicant Age</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${applicantAge || 'N/A'}</td>
       </tr>
+
       <tr style="background-color: #f4f4f4;">
         <td style="border: 1px solid #ddd; padding: 8px; font-weight: bold; text-align:center;">جنس مقدم الطلب/Applicant Gender</td>
         <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${applicantGender || 'N/A'}</td>
@@ -301,7 +302,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
     </table>
   `;
 
-  
+  //attachments
 
     const attachments = achievements
       .filter((achievement) => achievement.filePath)
