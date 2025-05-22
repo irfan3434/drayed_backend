@@ -296,7 +296,7 @@ app.post('/submit-application', uploadMiddleware, async (req, res) => {
         <tr style="${index % 2 === 0 ? 'background-color: #f4f4f4;' : ''}">
           <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${achievement.title}</td>
           <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${achievement.description}</td>
-          <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${achievement.filePath ? 'ملف مرفق/File Attached' : 'No file'}</td>
+          <td style="border: 1px solid #ddd; padding: 8px; text-align:center;">${achievement.filePath ? 'ملف مرفق/File Attached' : 'No file Attached'}</td>
         </tr>
       `).join('')}
     </table>
